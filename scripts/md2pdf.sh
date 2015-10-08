@@ -12,4 +12,4 @@ exec pandoc -f $OPTS \
         --latex-engine=xelatex \
         --template=templates/default.latex \
         -o /output/output.pdf \
-        /source/*.md
+        /source/*.md /source/meta/metadata.yaml

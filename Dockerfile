@@ -24,11 +24,19 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # These are likely to change dependencies
-RUN apt-get update -y \ 
+RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     lmodern \
+    git \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install fonts
+RUN [ -d /usr/share/fonts/opentype ] || mkdir /usr/share/fonts/opentype \
+    && git clone -b release \
+        https://github.com/adobe-fonts/source-code-pro.git \
+        /usr/share/fonts/opentype/scp \
+    && fc-cache -fv
 
 # Prepare build infrastructure
 RUN mkdir -p /workspace/templates
@@ -36,6 +44,6 @@ COPY templates/default/* /workspace/templates/
 COPY scripts/md2pdf.sh /workspace/
 RUN chmod +x /workspace/md2pdf.sh
 
-# Defining entry point 
+# Defining entry point
 WORKDIR /workspace
 CMD ["/workspace/md2pdf.sh"]
