@@ -6,9 +6,9 @@ if ! ls /source/*.md 1> /dev/null 2>&1; then
 fi
 
 # Preparing workspace and copying source files
-mkdir -p media meta
+mkdir -p media meta templates
 cp -rv /source/* .
-
+cp -rv /templates/ .
 # Generating UML diagrams
 
 function parse_yaml {

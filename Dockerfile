@@ -45,8 +45,7 @@ RUN mkdir -p /workspace \
     && cd -
 
 # Prepare build infrastructure
-RUN mkdir -p /workspace/templates
-COPY templates/default/* /workspace/templates/
+COPY templates/default/* /templates/
 COPY scripts/md2pdf.sh /workspace/
 RUN chmod +x /workspace/md2pdf.sh
 
