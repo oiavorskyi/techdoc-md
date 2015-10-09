@@ -1,0 +1,39 @@
+@startuml
+
+actor User
+box "GL Scope"
+    participant "OAuth Server" as OAuth <<Security>>
+    participant Resource
+end box
+database LDAP
+
+==Authentication==
+
+autonumber "1'.'#"
+User -> OAuth: Initial authentication request
+activate OAuth
+OAuth -> LDAP: Validation
+...
+OAuth <-- LDAP: Result
+alt result == success
+    User <-- OAuth: Token
+else failure
+    User <-- OAuth: 403 Forbidden
+end
+deactivate OAuth
+
+==Execution of operation==
+
+Note over User, Resource: At this point the User is authenticated
+
+|||
+
+autonumber "2'.'#"
+User -> Resource: Request providing token
+activate Resource
+
+Resource -> Resource: Execution
+User <-- Resource: Response
+deactivate Resource
+
+@enduml

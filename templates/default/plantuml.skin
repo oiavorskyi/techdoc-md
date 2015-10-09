@@ -5,6 +5,8 @@ skinparam sequence {
 	ActorBorderColor $color_line$
 	ActorBackgroundColor $color_light$
 	ActorFontColor $color_line$
+    ActorFontName $font_main$
+    ActorFontSize 14
 
 	ParticipantBorderColor $color_line$
 	ParticipantBackgroundColor $color_light$

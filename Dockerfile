@@ -28,6 +28,7 @@ RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     lmodern \
     git \
+    curl \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -37,6 +38,11 @@ RUN [ -d /usr/share/fonts/opentype ] || mkdir /usr/share/fonts/opentype \
         https://github.com/adobe-fonts/source-code-pro.git \
         /usr/share/fonts/opentype/scp \
     && fc-cache -fv
+
+RUN mkdir -p /workspace \
+    && cd /workspace && curl -O -J -L \
+    http://sourceforge.net/projects/plantuml/files/plantuml.jar/download \
+    && cd -
 
 # Prepare build infrastructure
 RUN mkdir -p /workspace/templates

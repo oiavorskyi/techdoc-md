@@ -1,0 +1,11 @@
+color:
+  bg:       #424F60
+  line:     #CED6DE
+  dark:     #28343F
+  light:    #60748B
+  note:
+    bg:     #FBFCA8
+    line:   #BBBC88
+font:
+  main:     DejaVu Serif
+  note:     DejaVu Serif
