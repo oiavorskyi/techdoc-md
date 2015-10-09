@@ -1,7 +1,7 @@
 @startuml
 
 actor User
-box "GL Scope"
+box "Solution Scope"
     participant "OAuth Server" as OAuth <<Security>>
     participant Resource
 end box

@@ -44,7 +44,7 @@ replacement_params=$(generate_replacement <(echo "$params"))
 eval "find /workspace -type f -name *.skin -exec sed -i $replacement_params {} \;"
 
 java -jar plantuml.jar \
-    -Sdpi=200 \
+    -Sdpi=250 \
     -config "/workspace/templates/plantuml.skin" \
     -o /workspace/media \
     "/workspace/uml/*.uml"

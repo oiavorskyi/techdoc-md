@@ -27,16 +27,20 @@ RUN apt-get update -y \
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     lmodern \
-    git \
     curl \
+    unzip \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install fonts
-RUN [ -d /usr/share/fonts/opentype ] || mkdir /usr/share/fonts/opentype \
-    && git clone -b release \
-        https://github.com/adobe-fonts/source-code-pro.git \
-        /usr/share/fonts/opentype/scp \
+RUN mkdir -p /usr/share/fonts/opentype/addon \
+    && cd /usr/share/fonts/opentype/addon \
+    && curl -O -J -L http://www.fontsquirrel.com/fonts/download/Journal \
+    && curl -O -J -L http://www.fontsquirrel.com/fonts/download/source-code-pro \
+    && curl -O -J -L http://www.fontsquirrel.com/fonts/download/source-sans-pro \
+    && curl -O -J -L http://www.fontsquirrel.com/fonts/download/source-serif-pro \
+    && find . -name '*.zip' -exec unzip {} \; \
+    && cd - \
     && fc-cache -fv
 
 RUN mkdir -p /workspace \

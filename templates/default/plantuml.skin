@@ -34,7 +34,7 @@ skinparam sequence {
     BoxBackgroundColor #222A3A
     BoxFontColor $color_light$
     BoxFontName $font_note$
-    BoxFontSize 16
+    BoxFontSize 18
     GroupBorderColor $color_light$
     GroupBackgroundColor $color_bg$
     GroupFontColor $color_light$
@@ -51,7 +51,7 @@ skinparam sequence {
 
 skinparam note {
 	FontName $font_note$
-	FontSize 10
+	FontSize 16
 	FontColor black
 	BackgroundColor $color_note_bg$
 	BorderColor $color_note_line$
