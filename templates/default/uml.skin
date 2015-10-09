@@ -1,0 +1,59 @@
+skinparam backgroundColor $color_bg$
+skinparam shadowing false
+
+skinparam sequence {
+	ActorBorderColor $color_line$
+	ActorBackgroundColor $color_light$
+	ActorFontColor $color_line$
+
+	ParticipantBorderColor $color_line$
+	ParticipantBackgroundColor $color_light$
+	ParticipantFontName $font_main$
+	ParticipantFontSize 14
+	ParticipantFontColor $color_line$
+
+	ArrowColor $color_line$
+    ArrowFontName $font_main$
+    ArrowFontSize 11
+    ArrowFontColor $color_line$
+
+    LifeLineBorderColor $color_line$
+    LifeLineBAckgroundColor $color_line$
+
+    DividerBackgroundColor $color_line$
+    DividerBorderColor $color_bg$
+    DividerFontColor $color_dark$
+    DividerFontName $font_main$
+    DividerFontSize 11
+    DividerFontStyle italic
+
+    GroupBackgroundColor $color_dark$
+    BoxBorderColor #1A2A36
+    BoxBackgroundColor #222A3A
+    BoxFontColor $color_light$
+    BoxFontName $font_note$
+    BoxFontSize 16
+    GroupBorderColor $color_light$
+    GroupBackgroundColor $color_bg$
+    GroupFontColor $color_light$
+    GroupFontSize 11
+    GroupFontName $font_main$
+    GroupHeaderFontColor $color_light$
+    GroupHeaderFontSize 11
+    GroupHeaderFontName $font_main$
+    StereotypeFontColor $color_bg$
+    StereotypeFontSize 11
+    StereotypeFontName $font_main$
+    StereotypeFontStyle italic
+}
+
+skinparam note {
+	FontName $font_note$
+	FontSize 10
+	FontColor black
+	BackgroundColor $color_note_bg$
+	BorderColor $color_note_line$
+
+}
+
+hide footbox
