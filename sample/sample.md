@@ -1,13 +1,3 @@
-# Abstract
-
-This example ilustrates capabilities of the technical documentation authoring
-tool that uses Markdown to write contents and Pandoc to transform it into a PDF
-file for distribution.
-
-The goal of the tool is to simplify a process of creation of a technical
-documentation and allow authors to concentrate on a content rather than a
-styling of resulting documents.
-
 # Features
 
 ## Nested headers
@@ -18,25 +8,30 @@ a following content to avoid potential issues.
 
 ### Sample third level
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur.
+\lipsum[60]
 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum.
+\lipsum[30]
 
 #### Sample fourth level
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur.
+\lipsum[40]
 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum.
+
+~~~
++------+---------------------+-------------------------+----------------------+
+| test | of 80 symbols table | this is just an example | with more lines here |
++======+=====================+=========================+======================+
+| one  | more                | line                    |                      |
++------+---------------------+-------------------------+----------------------+
+~~~
+
++------+---------------------+-------------------------+----------------------+
+| test | of 80 symbols table | this is just an example | with more lines here |
++======+=====================+=========================+======================+
+| one  | more                | line                    |                      |
++------+---------------------+-------------------------+----------------------+
+
+Table: Test 80 Symbols Table
 
 ##### Sample fifth level
 
@@ -94,7 +89,7 @@ writing of tables in this format.
 | * Three         |          |                 |
 +-----------------+----------+-----------------+
 
-The Table Title
+Table: The Table Title
 
 ## Uml diagrams
 

@@ -6,17 +6,17 @@ skinparam sequence {
 	ActorBackgroundColor $color_light$
 	ActorFontColor $color_line$
     ActorFontName $font_main$
-    ActorFontSize 14
+    ActorFontSize 12
 
 	ParticipantBorderColor $color_line$
 	ParticipantBackgroundColor $color_light$
 	ParticipantFontName $font_main$
-	ParticipantFontSize 14
+	ParticipantFontSize 12
 	ParticipantFontColor $color_line$
 
 	ArrowColor $color_line$
     ArrowFontName $font_main$
-    ArrowFontSize 11
+    ArrowFontSize 10
     ArrowFontColor $color_line$
 
     LifeLineBorderColor $color_line$
@@ -26,7 +26,7 @@ skinparam sequence {
     DividerBorderColor $color_bg$
     DividerFontColor $color_dark$
     DividerFontName $font_main$
-    DividerFontSize 11
+    DividerFontSize 10
     DividerFontStyle italic
 
     GroupBackgroundColor $color_dark$
@@ -34,25 +34,27 @@ skinparam sequence {
     BoxBackgroundColor #222A3A
     BoxFontColor $color_light$
     BoxFontName $font_note$
-    BoxFontSize 18
+    BoxFontSize 12
+    BoxFontStyle italic
     GroupBorderColor $color_light$
     GroupBackgroundColor $color_bg$
     GroupFontColor $color_light$
-    GroupFontSize 11
+    GroupFontSize 10
     GroupFontName $font_main$
     GroupHeaderFontColor $color_light$
-    GroupHeaderFontSize 11
+    GroupHeaderFontSize 10
     GroupHeaderFontName $font_main$
     StereotypeFontColor $color_bg$
-    StereotypeFontSize 11
+    StereotypeFontSize 10
     StereotypeFontName $font_main$
     StereotypeFontStyle italic
 }
 
 skinparam note {
 	FontName $font_note$
-	FontSize 16
+	FontSize 9 
 	FontColor black
+    FontStyle italic
 	BackgroundColor $color_note_bg$
 	BorderColor $color_note_line$
 

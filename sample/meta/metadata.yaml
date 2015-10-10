@@ -1,3 +1,19 @@
 ---
-mainfont: Source Serif Pro 
+mainfont: DejaVu Serif
+sansfont: DejaVu Sans
+monofont: DejaVu Sans Mono 
+
+title: Sample Document
+author: 
+- Oleg Iavorskyi
+- Oleksii Batiuk
+
+abstract: >
+    This example ilustrates capabilities of the technical documentation
+    authoring tool that uses Markdown to write contents and Pandoc to 
+    transform it into a PDF file for distribution.
+
+    The goal of the tool is to simplify a process of creation of a technical
+    documentation and allow authors to concentrate on a content rather than a
+    styling of resulting documents.
 ---

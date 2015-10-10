@@ -49,11 +49,12 @@ java -jar plantuml.jar \
     -o /workspace/media \
     "/workspace/uml/*.uml"
 
-OPTS=markdown+simple_tables+table_captions+backtick_code_blocks+fancy_lists+multiline_tables+grid_tables+fenced_code_blocks+header_attributes
+OPTS=markdown+table_captions+backtick_code_blocks+fancy_lists+grid_tables+fenced_code_blocks+header_attributes+raw_tex+definition_lists+implicit_header_references+blank_before_header+escaped_line_breaks
 
 exec pandoc -f $OPTS \
         --latex-engine=xelatex \
         --default-image-extension=png \
+        --chapters \
         --template=templates/default.latex \
         -o /output/output.pdf \
         *.md meta/*.yaml

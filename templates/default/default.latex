@@ -1,12 +1,18 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+% This is our base class where we also set margins
+% Usage of DIV and BCOR is explained in the Koma Script Guide
+% The combination of sizes and fonts is such that mono text like code
+% listings will fit into the page as long as it is under 80 characters
+\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof]{scrreprt}
+
+% Adding a bit of spacing between the lines
+\usepackage{setspace}
+\onehalfspacing
+\AfterTOCHead{\singlespacing}
+
 $if(fontfamily)$
 \usepackage[$fontfamilyoptions$]{$fontfamily$}
 $else$
 \usepackage{lmodern}
-$endif$
-$if(linestretch)$
-\usepackage{setspace}
-\setstretch{$linestretch$}
 $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -43,6 +49,16 @@ $if(CJKmainfont)$
     \setCJKmainfont[$CJKoptions$]{$CJKmainfont$}
 $endif$
 \fi
+
+% Updating geometry after all fonts have been loaded
+\recalctypearea
+
+% Defining colors
+%\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+
+% Changing styles of some text elements
+\addtokomafont{captionlabel}{\bfseries}
+
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -111,10 +127,7 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 \VerbatimFootnotes
 $endif$
-$if(tables)$
 \usepackage{longtable,booktabs}
-$endif$
-$if(graphics)$
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -124,7 +137,6 @@ $if(graphics)$
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-$endif$
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
@@ -139,30 +151,11 @@ $endif$
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-$if(numbersections)$
+
 \setcounter{secnumdepth}{5}
-$else$
-\setcounter{secnumdepth}{0}
-$endif$
+
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
-$endif$
-$if(dir)$
-\ifxetex
-  % load bidi as late as possible as it modifies e.g. graphicx
-  $if(latex-dir-rtl)$
-  \usepackage[RTLdocument]{bidi}
-  $else$
-  \usepackage{bidi}
-  $endif$
-\fi
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \TeXXeTstate=1
-  \newcommand{\RL}[1]{\beginR #1\endR}
-  \newcommand{\LR}[1]{\beginL #1\endL}
-  \newenvironment{RTL}{\beginR}{\endR}
-  \newenvironment{LTR}{\beginL}{\endL}
-\fi
 $endif$
 
 $if(title)$
@@ -176,6 +169,11 @@ $for(header-includes)$
 $header-includes$
 $endfor$
 
+% Defining title page parameters
+\titlehead{\rule{\textwidth}{1pt}}
+\date{\today}
+\publishers{\rule{\textwidth}{1pt}}
+
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
 \let\oldparagraph\paragraph
@@ -186,10 +184,13 @@ $endfor$
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
+% Adding this package so demos could be created
+\usepackage{lipsum}
+
+% Define 
+
 \begin{document}
-$if(title)$
 \maketitle
-$endif$
 $if(abstract)$
 \begin{abstract}
 $abstract$
@@ -198,21 +199,13 @@ $endif$
 
 $for(include-before)$
 $include-before$
-
 $endfor$
-$if(toc)$
-{
-\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-\setcounter{tocdepth}{$toc-depth$}
+
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{3}
 \tableofcontents
-}
-$endif$
-$if(lot)$
 \listoftables
-$endif$
-$if(lof)$
 \listoffigures
-$endif$
 $body$
 
 $if(natbib)$
