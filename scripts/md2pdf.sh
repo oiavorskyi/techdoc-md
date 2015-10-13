@@ -9,8 +9,9 @@ fi
 mkdir -p media meta templates
 cp -rv /source/* .
 cp -rv /templates/ .
-# Generating UML diagrams
+cp -rv /include/ .
 
+# Generating UML diagrams
 function parse_yaml {
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
    sed -ne "s|^\($s\):|\1|" \
@@ -49,12 +50,16 @@ java -jar plantuml.jar \
     -o /workspace/media \
     "/workspace/uml/*.uml"
 
+# Pre-processing all *.md files
+eval "find /workspace -type f -name *.md -exec gpp -H '{}' -o '{}'.mdp \;"
+
 OPTS=markdown+table_captions+backtick_code_blocks+fancy_lists+grid_tables+fenced_code_blocks+header_attributes+raw_tex+definition_lists+implicit_header_references+blank_before_header+escaped_line_breaks
 
 exec pandoc -f $OPTS \
+        --listings \
         --latex-engine=xelatex \
         --default-image-extension=png \
         --chapters \
         --template=templates/default.latex \
         -o /output/output.pdf \
-        *.md meta/*.yaml
+        *.mdp meta/*.yaml

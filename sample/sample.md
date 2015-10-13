@@ -126,3 +126,11 @@ specified.
 **Example**:
 
 ![Sample UML](media/sample)
+
+## Includes
+
+### Test external java source code include:
+
+```{.java}
+<#include "include/HelloWorld.java">
+```

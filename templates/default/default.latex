@@ -187,6 +187,30 @@ $endfor$
 % Adding this package so demos could be created
 \usepackage{lipsum}
 
+% Listings configuration
+\lstset{
+    basicstyle=\ttfamily\footnotesize\singlespacing,
+    numbers=none,
+    keywordstyle=\color[RGB]{127,0,85}\bfseries,
+    stringstyle=\color[RGB]{42,0,255},
+    commentstyle=\color[RGB]{63,127,95}\itshape,
+    numberstyle=\small,
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color[RGB]{248,248,248},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=true,
+    breakautoindent=true,
+    escapeinside={\%*}{*)},
+    linewidth=\textwidth,
+    basewidth=0.5em,
+}
+
 % Define 
 
 \begin{document}

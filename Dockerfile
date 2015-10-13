@@ -29,6 +29,7 @@ RUN apt-get update -y \
     lmodern \
     curl \
     unzip \
+    gpp \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -43,12 +44,14 @@ RUN mkdir -p /usr/share/fonts/opentype/addon \
     && cd - \
     && fc-cache -fv
 
+# Downloading latest plantuml jar file
 RUN mkdir -p /workspace \
     && cd /workspace && curl -O -J -L \
     http://sourceforge.net/projects/plantuml/files/plantuml.jar/download \
     && cd -
 
-# Prepare build infrastructure
+# Preparing build infrastructure
+RUN mkdir -p /include
 COPY templates/default/* /templates/
 COPY scripts/md2pdf.sh /workspace/
 RUN chmod +x /workspace/md2pdf.sh
