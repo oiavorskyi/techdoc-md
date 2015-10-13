@@ -5,7 +5,7 @@ Tool for producing technical documentation using Markdown and Pandoc
 
 To see example output, run following command in `sample` folder:
 
-``docker run --rm -v `pwd`:/source:ro -v `pwd`/output:/output -v oiavorskyi/techdoc-md``
+``docker run --rm -v `pwd`:/source:ro -v `pwd`/output:/output oiavorskyi/techdoc-md``
 
 ## Todo
 
