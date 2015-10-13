@@ -189,15 +189,11 @@ $endfor$
 
 % Listings configuration
 \lstset{
-    basicstyle=\ttfamily\footnotesize\singlespacing,
+    basicstyle=\ttfamily\footnotesize,
     numbers=none,
     keywordstyle=\color[RGB]{127,0,85}\bfseries,
     stringstyle=\color[RGB]{42,0,255},
     commentstyle=\color[RGB]{63,127,95}\itshape,
-    numberstyle=\small,
-    stepnumber=1,
-    numbersep=5pt,
-    backgroundcolor=\color[RGB]{248,248,248},
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
@@ -209,6 +205,8 @@ $endfor$
     escapeinside={\%*}{*)},
     linewidth=\textwidth,
     basewidth=0.5em,
+    prebreak=\raisebox{0ex}[0ex][0ex]
+        {\ensuremath{\hookleftarrow}}    
 }
 
 % Define 
