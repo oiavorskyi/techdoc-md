@@ -51,11 +51,12 @@ java -jar plantuml.jar \
     "/workspace/uml/*.uml"
 
 # Pre-processing all *.md files
-eval "find /workspace -type f -name *.md -exec gpp -H '{}' -o '{}'.mdp \;"
+eval "find /workspace -type f -name *.md -exec gpp -U '<#' '>' '\B' '|' '>' '<' '>' '#' '' '{}' -o '{}'.mdp \;"
 
-OPTS=markdown+table_captions+backtick_code_blocks+fancy_lists+grid_tables+fenced_code_blocks+header_attributes+raw_tex+definition_lists+implicit_header_references+blank_before_header+escaped_line_breaks
+OPTS=markdown+table_captions+backtick_code_blocks+fancy_lists+grid_tables+fenced_code_blocks+fenced_code_attributes+header_attributes+raw_tex+definition_lists+implicit_header_references+blank_before_header+escaped_line_breaks
 
 exec pandoc -f $OPTS \
+        --standalone \
         --listings \
         --latex-engine=xelatex \
         --default-image-extension=png \
