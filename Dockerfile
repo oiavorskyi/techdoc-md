@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:testing
 
 MAINTAINER Oleg Iavorskyi <oleg.iavorskyi@gmail.com>
 
@@ -19,17 +19,12 @@ RUN apt-get update -y \
     texlive-latex-extra \
     texlive-fonts-extra \
     texlive-bibtex-extra \
-    fontconfig \
-  && apt-get -y clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# These are likely to change dependencies
-RUN apt-get update -y \
-  && apt-get install -y --no-install-recommends \
     lmodern \
+    fontconfig \
     curl \
     unzip \
     gpp \
+    wget \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -49,6 +44,13 @@ RUN mkdir -p /workspace \
     && cd /workspace && curl -O -J -L \
     http://sourceforge.net/projects/plantuml/files/plantuml.jar/download \
     && cd -
+
+# RUN apt-get update -y \
+#   && apt-get install -y --no-install-recommends \
+#   wget \
+#   xzdec \
+#   && tlmgr init-usertree \
+#   && tlmgr update --self --all --reinstall-forcibly-removed
 
 # Preparing build infrastructure
 RUN mkdir -p /include
