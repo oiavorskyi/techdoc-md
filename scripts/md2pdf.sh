@@ -45,10 +45,16 @@ replacement_params=$(generate_replacement <(echo "$params"))
 eval "find /workspace -type f -name *.skin -exec sed -i $replacement_params {} \;"
 
 java -jar plantuml.jar \
-    -Sdpi=250 \
+    -Sdpi=200 \
     -config "/workspace/templates/plantuml.skin" \
-    -o /workspace/media \
+    -o /workspace/temp \
     "/workspace/uml/*.uml"
+
+find /workspace/temp -type f -name '*.png' \
+    -exec convert -units PixelsPerInch -density 200 \
+    {} {} \;
+
+cp -rv /workspace/temp/*.png /workspace/media/
 
 # Pre-processing all *.md files
 find /workspace -type f -name '*.md' -exec gpp -U '<#' '>' '\B' '|' '>' '<' '>' '#' '' '{}' -o '{}'.mdp \;

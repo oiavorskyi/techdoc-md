@@ -45,9 +45,9 @@ RUN mkdir -p /workspace \
     http://sourceforge.net/projects/plantuml/files/plantuml.jar/download \
     && cd -
 
-# RUN apt-get update -y \
-#   && apt-get install -y --no-install-recommends \
-#   wget \
+RUN apt-get update -y \
+   && apt-get install -y --no-install-recommends \
+   imagemagick
 #   xzdec \
 #   && tlmgr init-usertree \
 #   && tlmgr update --self --all --reinstall-forcibly-removed
