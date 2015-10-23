@@ -263,11 +263,11 @@ $endfor$
 
 % Listings configuration
 \lstset{
-    basicstyle=\ttfamily\footnotesize,
+    basicstyle=\ttfamily\small,
     numbers=none,
-    keywordstyle=\color[RGB]{127,0,85}\bfseries,
-    stringstyle=\color[RGB]{42,0,255},
-    commentstyle=\color[RGB]{63,127,95}\itshape,
+    keywordstyle=\color{cemph}\bfseries,
+    stringstyle=\color{chigh},
+    commentstyle=\color{clow}\itshape,
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
