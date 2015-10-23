@@ -1,13 +1,14 @@
 ---
 color:
-  bg:       #FFFFFF
-  low:      #CED6DE
-  high:     #60748B
-  emph:     #28343F
+  bg:       "FFFFFF"
+  text:     "000000"
+  low:      "CED6DE"
+  high:     "60748B"
+  emph:     "28343F"
   note:
-    bg:     #FBFCA8
-    fg:     #000000
-    line:   #BBBC88
+    bg:     "FBFCA8"
+    fg:     "28343F"
+    line:   "BBBC88"
 font:
   main:     DejaVu Serif
   sans:     DejaVu Sans

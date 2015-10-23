@@ -2,18 +2,8 @@
 % Usage of DIV and BCOR is explained in the Koma Script Guide
 % The combination of sizes and fonts is such that mono text like code
 % listings will fit into the page as long as it is under 80 characters
-\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof,headsepline,footsepline]{scrreprt}
+\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof,footsepline,footlines=1]{scrreprt}
 
-% Adding a bit of spacing between the lines
-\usepackage{setspace}
-\onehalfspacing
-\AfterTOCHead{\singlespacing}
-
-$if(fontfamily)$
-\usepackage[$fontfamilyoptions$]{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -50,10 +40,60 @@ $endif$
 \recalctypearea
 
 % Defining colors
-%\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\usepackage[table]{xcolor}
+
+$if(color.bg)$
+\definecolor{cbg}{HTML}{$color.bg$}
+$else$
+\definecolor{cbg}{HTML}{FFFFFF}
+$endif$
+$if(color.text)$
+\definecolor{ctext}{HTML}{$color.text$}
+$else$
+\definecolor{ctext}{HTML}{000000}
+$endif$
+$if(color.low)$
+\definecolor{clow}{HTML}{$color.low$}
+$else$
+\definecolor{clow}{HTML}{000000}
+$endif$
+$if(color.high)$
+\definecolor{chigh}{HTML}{$color.high$}
+$else$
+\definecolor{chigh}{HTML}{000000}
+$endif$
+$if(color.emph)$
+\definecolor{cemph}{HTML}{$color.emph$}
+$else$
+\definecolor{cemph}{HTML}{000000}
+$endif$
+$if(color.note.bg)$
+\definecolor{cnotebg}{HTML}{$color.note.bg$}
+$else$
+\definecolor{cnotebg}{HTML}{FFFFFF}
+$endif$
+$if(color.note.fg)$
+\definecolor{cnotefg}{HTML}{$color.note.fg$}
+$else$
+\definecolor{cnotefg}{HTML}{000000}
+$endif$
+$if(color.note.line)$
+\definecolor{cnoteline}{HTML}{$color.note.line$}
+$else$
+\definecolor{cnoteline}{HTML}{000000}
+$endif$
 
 % Changing styles of some text elements
-\addtokomafont{captionlabel}{\bfseries}
+\addtokomafont{captionlabel}{\color{cemph}}
+
+% Styling headers
+\RedeclareSectionCommand[beforeskip=0pt,afterskip=0pt]{chapter}
+\renewcommand*\chapterheadendvskip{\vspace*{-0.6\baselineskip}\noindent\rule{\linewidth}{1pt}\par\vspace{0.5\baselineskip}}
+\setkomafont{chapter}{\LARGE\mdseries}
+
+\RedeclareSectionCommand[beforeskip=0pt,afterskip=0.1\baselineskip]{section}
+\setkomafont{section}{\Large\bfseries\color{cemph}}
+
 
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
