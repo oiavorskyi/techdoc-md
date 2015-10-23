@@ -2,7 +2,7 @@
 % Usage of DIV and BCOR is explained in the Koma Script Guide
 % The combination of sizes and fonts is such that mono text like code
 % listings will fit into the page as long as it is under 80 characters
-\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof]{scrreprt}
+\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof,headsepline,footsepline]{scrreprt}
 
 % Adding a bit of spacing between the lines
 \usepackage{setspace}
@@ -32,21 +32,17 @@ $endif$
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
-$if(mainfont)$
-    \setmainfont[$mainfontoptions$]{$mainfont$}
+$if(font.main)$
+    \setmainfont{$font.main$}
 $endif$
-$if(sansfont)$
-    \setsansfont[$sansfontoptions$]{$sansfont$}
+$if(font.sans)$
+    \setsansfont{$font.sans$}
 $endif$
-$if(monofont)$
-    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$monofontoptions$$endif$]{$monofont$}
+$if(font.mono)$
+    \setmonofont[Mapping=tex-ansi]{$font.mono$}
 $endif$
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek)[$mathfontoptions$]{$mathfont$}
-$endif$
-$if(CJKmainfont)$
-    \usepackage{xeCJK}
-    \setCJKmainfont[$CJKoptions$]{$CJKmainfont$}
+$if(font.math)$
+    \setmathfont(Digits,Latin,Greek){$font.math$}
 $endif$
 \fi
 
@@ -219,6 +215,7 @@ $abstract$
 \end{abstract}
 $endif$
 
+\pagenumbering{roman}
 $for(include-before)$
 $include-before$
 $endfor$
@@ -228,6 +225,9 @@ $endfor$
 \tableofcontents
 \listoftables
 \listoffigures
+
+\cleardoublepage
+\pagenumbering{arabic}
 $body$
 
 $if(natbib)$

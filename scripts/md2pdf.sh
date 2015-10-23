@@ -6,10 +6,11 @@ if ! ls /source/*.md 1> /dev/null 2>&1; then
 fi
 
 # Preparing workspace and copying source files
-mkdir -p media meta templates
+
 cp -rv /source/* .
 cp -rv /templates/ .
 cp -rv /include/ .
+mkdir -p /workspace/media
 
 # Generating UML diagrams
 function parse_yaml {
@@ -22,7 +23,7 @@ function parse_yaml {
       vname[indent] = $2;
       for (i in vname) {if (i > indent) {delete vname[i]}}
       if (length($3) > 0) {
-         vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("_")}
+         vn=""; for (i=0; i<indent; i++) {vn=(vn)(vname[i])("\.")}
          printf("%s%s:%s\n", vn, $2, $3);
       }
    }'
@@ -69,4 +70,4 @@ exec pandoc -f $OPTS \
         --chapters \
         --template=templates/default.latex \
         -o /output/output.pdf \
-        *.mdp meta/*.yaml
+        *.mdp meta/*.yaml templates/*.yaml

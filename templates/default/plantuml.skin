@@ -1,62 +1,61 @@
-skinparam backgroundColor $color_bg$
+skinparam backgroundColor $color.bg$
 skinparam shadowing false
 
 skinparam sequence {
-	ActorBorderColor $color_line$
-	ActorBackgroundColor $color_light$
-	ActorFontColor $color_line$
-    ActorFontName $font_main$
+	ActorBorderColor $color.high$
+	ActorBackgroundColor $color.low$
+	ActorFontColor $color.high$
+    ActorFontName $font.sans$
     ActorFontSize 12
 
-	ParticipantBorderColor $color_line$
-	ParticipantBackgroundColor $color_light$
-	ParticipantFontName $font_main$
+	ParticipantBorderColor $color.high$
+	ParticipantBackgroundColor $color.low$
+	ParticipantFontName $font.sans$
 	ParticipantFontSize 12
-	ParticipantFontColor $color_line$
+	ParticipantFontColor $color.high$
 
-	ArrowColor $color_line$
-    ArrowFontName $font_main$
+	ArrowColor $color.emph$
+    ArrowFontName $font.sans$
     ArrowFontSize 10
-    ArrowFontColor $color_line$
+    ArrowFontColor $color.emph$
 
-    LifeLineBorderColor $color_line$
-    LifeLineBAckgroundColor $color_line$
+    LifeLineBorderColor $color.low$
+    LifeLineBAckgroundColor $color.low$
 
-    DividerBackgroundColor $color_line$
-    DividerBorderColor $color_bg$
-    DividerFontColor $color_dark$
-    DividerFontName $font_main$
+    DividerBackgroundColor $color.low$
+    DividerBorderColor $color.bg$
+    DividerFontColor $color.bg$
+    DividerFontName $font.sans$
     DividerFontSize 10
     DividerFontStyle italic
 
-    GroupBackgroundColor $color_dark$
-    BoxBorderColor #1A2A36
-    BoxBackgroundColor #222A3A
-    BoxFontColor $color_light$
-    BoxFontName $font_note$
-    BoxFontSize 12
+    BoxBorderColor $color.low$
+    BoxBackgroundColor $color.bg$
+    BoxFontColor $color.low$
+    BoxFontName $font.sans$
+    BoxFontSize 10
     BoxFontStyle italic
-    GroupBorderColor $color_light$
-    GroupBackgroundColor $color_bg$
-    GroupFontColor $color_light$
+    GroupBorderColor $color.high$
+    GroupBackgroundColor $color.bg$
+    GroupFontColor $color.high$
     GroupFontSize 10
-    GroupFontName $font_main$
-    GroupHeaderFontColor $color_light$
+    GroupFontName $font.sans$
+    GroupHeaderFontColor $color.high$
     GroupHeaderFontSize 10
-    GroupHeaderFontName $font_main$
-    StereotypeFontColor $color_bg$
+    GroupHeaderFontName $font.sans$
+    StereotypeFontColor $color.bg$
     StereotypeFontSize 10
-    StereotypeFontName $font_main$
+    StereotypeFontName $font.sans$
     StereotypeFontStyle italic
 }
 
 skinparam note {
-	FontName $font_note$
+	FontName $font.sans$
 	FontSize 9 
-	FontColor black
+	FontColor $color.note.fg$
     FontStyle italic
-	BackgroundColor $color_note_bg$
-	BorderColor $color_note_line$
+	BackgroundColor $color.note.bg$
+	BorderColor $color.note.line$
 
 }
 
