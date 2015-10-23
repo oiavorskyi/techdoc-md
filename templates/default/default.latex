@@ -36,9 +36,6 @@ $if(font.math)$
 $endif$
 \fi
 
-% Updating geometry after all fonts have been loaded
-\recalctypearea
-
 % Defining colors
 \usepackage[table]{xcolor}
 
@@ -83,8 +80,17 @@ $else$
 \definecolor{cnoteline}{HTML}{000000}
 $endif$
 
+% Changing the main text color
+\makeatletter
+\newcommand{\globalcolor}[1]{%
+  \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+\AtBeginDocument{\globalcolor{ctext}}
+
 % Changing styles of some text elements
 \addtokomafont{captionlabel}{\color{cemph}}
+\addtokomafont{caption}{\color{chigh}}
 
 % Styling headers
 \RedeclareSectionCommand[beforeskip=0pt,afterskip=0pt]{chapter}
@@ -94,6 +100,40 @@ $endif$
 \RedeclareSectionCommand[beforeskip=0pt,afterskip=0.1\baselineskip]{section}
 \setkomafont{section}{\Large\bfseries\color{cemph}}
 
+% Defining footer of each page
+\usepackage{lastpage}
+\usepackage[plainfootsepline]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+
+\setkomafont{footsepline}{\color{clow}}
+\setkomafont{pagefoot}{\normalfont\footnotesize\color{clow}}
+\setkomafont{pagenumber}{\normalfont\footnotesize\color{clow}}
+
+\newcommand{\leftfooter}{%
+    $if(title)$
+        \textbf{Title: }$title$$if(subtitle)$ - $subtitle$$endif$\\
+    $endif$
+    $if(revision)$
+        \textbf{Revision: }$revision$\\
+    $endif$
+    $if(id)$
+        \textbf{ID: }$id$
+    $endif$
+}
+
+\newcommand{\rightfooter}{%
+    \textcopyright~2015 GlobalLogic Inc.\\
+    Confidential\\
+    \textbf{Page: }\thepage~of~\pageref*{LastPage}%
+}
+
+\lofoot[\leftfooter]{\leftfooter}
+\rofoot[\rightfooter]{\rightfooter}
+\cefoot[]{}
+\cofoot[]{}
+
+% Updating geometry after all fonts have been loaded
+\recalctypearea
 
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -114,11 +154,6 @@ $endif$
 \else
   \usepackage[unicode=true]{hyperref}
 \fi
-}
-\@ifpackageloaded{color}{
-    \PassOptionsToPackage{usenames,dvipsnames}{color}
-}{%
-    \usepackage[usenames,dvipsnames]{color}
 }
 \makeatother
 \hypersetup{breaklinks=true,
@@ -163,7 +198,7 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 \VerbatimFootnotes
 $endif$
-\usepackage{longtable,booktabs}
+\usepackage{array,longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -208,7 +243,6 @@ $endfor$
 % Defining title page parameters
 \titlehead{\rule{\textwidth}{1pt}}
 \date{\today}
-\publishers{\rule{\textwidth}{1pt}}
 
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
@@ -245,29 +279,48 @@ $endfor$
         {\ensuremath{\hookleftarrow}}    
 }
 
+% Adjusting tables styling
+\newcolumntype{l}{>{\rowfont}c}
+\newcommand\setrowfont[1]{\noalign{\gdef\rowfont{#1}}}
+\gdef\rowfont{}
+
+\makeatletter
+\renewcommand{\toprule}{\cmidrule[\heavyrulewidth](l{-0.6em}r{-0.6em}){1-\LT@cols}\rowcolor{clow}\setrowfont{\bfseries}}
+\renewcommand{\midrule}{\cmidrule[\lightrulewidth](l{-0.6em}r{-0.6em}){1-\LT@cols}\setrowfont{\normalfont}}
+\renewcommand{\bottomrule}{\cmidrule[\heavyrulewidth](l{-0.6em}r{-0.6em}){1-\LT@cols}}
+\makeatother
+
+\belowrulesep=0pt
+\aboverulesep=0pt
+\extrarowheight=0.75ex
+\arrayrulecolor{chigh}
+
+% Adjusting table of contents style
+\usepackage{tocstyle}
+\usetocstyle{standard}
+
 % Define 
 
 \begin{document}
+$if(title)$
 \maketitle
+$endif$
 $if(abstract)$
 \begin{abstract}
 $abstract$
 \end{abstract}
 $endif$
 
-\pagenumbering{roman}
 $for(include-before)$
 $include-before$
 $endfor$
 
-\hypersetup{linkcolor=black}
+\hypersetup{linkcolor=ctext}
 \setcounter{tocdepth}{3}
 \tableofcontents
 \listoftables
 \listoffigures
 
-\cleardoublepage
-\pagenumbering{arabic}
 $body$
 
 $if(natbib)$
