@@ -1,8 +1,13 @@
 ---
 title: Sample Document
+subtitle: The subtitle
 author: 
 - Oleg Iavorskyi
 - Oleksii Batiuk
+revision: 1.0-draft
+id: SMP-DOC
+company: Acme Inc.
+disclaimer: Confidential
 
 abstract: >
     This example ilustrates capabilities of the technical documentation

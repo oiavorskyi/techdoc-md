@@ -122,8 +122,12 @@ $endif$
 }
 
 \newcommand{\rightfooter}{%
-    \textcopyright~2015 GlobalLogic Inc.\\
-    Confidential\\
+    $if(company)$
+        \textcopyright~\the\year~$company$\\
+    $endif$
+    $if(disclaimer)$
+        $disclaimer$\\
+    $endif$
     \textbf{Page: }\thepage~of~\pageref*{LastPage}%
 }
 

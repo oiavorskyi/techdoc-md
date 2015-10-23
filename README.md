@@ -9,10 +9,9 @@ To see example output, run following command in `sample` folder:
 
 ## Todo
 
-* Ability to mount templates folder and not changing anything there
+* Support for logo at title page
 * Substitution of variables in Markdown sources files
 * Handling of source code inclusion
-* Inclusion of media files
-* TOC generation
 * Title page generation
 * Change-list page generation
+* Enhance example to include most common types of markup
