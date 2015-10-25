@@ -249,7 +249,7 @@ $endif$
 % Defining title page parameters and style
 \titlehead{%
 $if(logo)$
-\includegraphics{$logo$}\vfill
+\includegraphics{media/$logo$}\vfill
 $endif$
 \color{chigh}\rule{\textwidth}{1pt}
 \vspace{12em}%

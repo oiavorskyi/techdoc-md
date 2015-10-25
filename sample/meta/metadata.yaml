@@ -8,7 +8,7 @@ revision: 1.0-draft
 id: SMP-DOC
 company: Sample Company
 disclaimer: Confidential
-logo: media/logo
+logo: logo
 
 abstract: >
     This example ilustrates capabilities of the technical documentation
