@@ -16,23 +16,6 @@ a following content to avoid potential issues.
 
 \lipsum[40]
 
-
-~~~
-+------+---------------------+-------------------------+----------------------+
-| test | of 80 symbols table | this is just an example | with more lines here |
-+======+=====================+=========================+======================+
-| one  | more                | line                    |                      |
-+------+---------------------+-------------------------+----------------------+
-~~~
-
-+------+---------------------+-------------------------+----------------------+
-| test | of 80 symbols table | this is just an example | with more lines here |
-+======+=====================+=========================+======================+
-| one  | more                | line                    |                      |
-+------+---------------------+-------------------------+----------------------+
-
-Table: Test 80 Symbols Table
-
 ##### Sample fifth level
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

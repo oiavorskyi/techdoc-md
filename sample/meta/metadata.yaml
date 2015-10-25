@@ -6,8 +6,9 @@ author:
 - Oleksii Batiuk
 revision: 1.0-draft
 id: SMP-DOC
-company: Acme Inc.
+company: Sample Company
 disclaimer: Confidential
+logo: media/logo
 
 abstract: >
     This example ilustrates capabilities of the technical documentation

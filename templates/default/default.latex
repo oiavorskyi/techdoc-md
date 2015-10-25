@@ -2,7 +2,12 @@
 % Usage of DIV and BCOR is explained in the Koma Script Guide
 % The combination of sizes and fonts is such that mono text like code
 % listings will fit into the page as long as it is under 80 characters
-\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof,footsepline,footlines=1]{scrreprt}
+% The titlepage=no is required as a hack to resolve the issue when footers
+% are not shown on title page
+\documentclass[paper=letter,12pt,DIV=13,BCOR=8.25mm,abstract,toc=listof,footsepline,footlines=1,enlargefirstpage,numbers=noenddot,titlepage=no]{scrreprt}
+
+\usepackage[plainfootsepline]{scrlayer-scrpage}
+\pagestyle{scrheadings}
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -102,39 +107,46 @@ $endif$
 
 % Defining footer of each page
 \usepackage{lastpage}
-\usepackage[plainfootsepline]{scrlayer-scrpage}
-\pagestyle{scrheadings}
 
 \setkomafont{footsepline}{\color{clow}}
 \setkomafont{pagefoot}{\normalfont\footnotesize\color{clow}}
 \setkomafont{pagenumber}{\normalfont\footnotesize\color{clow}}
 
-\newcommand{\leftfooter}{%
-    $if(title)$
-        \textbf{Title: }$title$$if(subtitle)$ - $subtitle$$endif$\\
-    $endif$
+
+\newcommand{\baseleftfooter}{%
     $if(revision)$
         \textbf{Revision: }$revision$\\
     $endif$
     $if(id)$
         \textbf{ID: }$id$
-    $endif$
+    $endif$%
 }
 
-\newcommand{\rightfooter}{%
+\newcommand{\leftfooter}{%
+    $if(title)$
+        \textbf{Title: }$title$$if(subtitle)$ - $subtitle$$endif$\\
+    $endif$
+    \baseleftfooter%
+}
+
+\newcommand{\baserightfooter}{%
     $if(company)$
         \textcopyright~\the\year~$company$\\
     $endif$
     $if(disclaimer)$
-        $disclaimer$\\
-    $endif$
+        $disclaimer$
+    $endif$%
+}
+
+\newcommand{\rightfooter}{%
+    \baserightfooter\\
     \textbf{Page: }\thepage~of~\pageref*{LastPage}%
 }
 
-\lofoot[\leftfooter]{\leftfooter}
-\rofoot[\rightfooter]{\rightfooter}
-\cefoot[]{}
-\cofoot[]{}
+\lofoot[\baseleftfooter]{\leftfooter}
+\rofoot[\baserightfooter]{\rightfooter}
+\cefoot*{}
+\cofoot*{}
 
 % Updating geometry after all fonts have been loaded
 \recalctypearea
@@ -233,20 +245,20 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 
-$if(title)$
-\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
-$endif$
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-$endif$
-\date{$date$}
-$for(header-includes)$
-$header-includes$
-$endfor$
 
-% Defining title page parameters
-\titlehead{\rule{\textwidth}{1pt}}
+% Defining title page parameters and style
+\titlehead{%
+$if(logo)$
+\includegraphics{$logo$}\vfill
+$endif$
+\color{chigh}\rule{\textwidth}{1pt}
+\vspace{12em}%
+}
 \date{\today}
+\addtokomafont{author}{\small\color{chigh}}
+\addtokomafont{date}{\small\color{clow}}
+\addtokomafont{title}{\normalfont\color{cemph}}
+\addtokomafont{subtitle}{\Large\color{chigh}}
 
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
@@ -303,15 +315,35 @@ $endfor$
 \usepackage{tocstyle}
 \usetocstyle{standard}
 
+% Including any other header commands
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 % Define 
 
 \begin{document}
+
 $if(title)$
-\maketitle
+\title{$title$}
 $endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+
+$if(title)$
+\renewcommand*{\titlepagestyle}{plain.scrheadings}
+\maketitle
+\newpage
+$endif$
+
 $if(abstract)$
 \begin{abstract}
 $abstract$
+\thispagestyle{plain.scrheadings}
 \end{abstract}
 $endif$
 
@@ -321,11 +353,21 @@ $endfor$
 
 \hypersetup{linkcolor=ctext}
 \setcounter{tocdepth}{3}
-\tableofcontents
-\listoftables
-\listoffigures
 
-$body$
+
+\clearpage
+\begingroup
+    \pagestyle{scrheadings}
+    \renewcommand*{\chapterpagestyle}{scrheadings}
+    
+    \tableofcontents
+    \listoftables
+    \listoffigures
+
+    $body$
+
+    \clearpage
+\endgroup
 
 $if(natbib)$
 $if(bibliography)$
