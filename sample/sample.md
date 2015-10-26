@@ -106,9 +106,9 @@ generated from the source file `uml/sample.uml` one needs to reference it as
 `media/sample`. The extension is optional and `png` will be used if not
 specified.
 
-**Example**:
+**Sequence Diagram Example**:
 
-![Sample UML](media/sample)
+![Sample Sequence Diagram](media/sample-sequence)
 
 ## Includes
 

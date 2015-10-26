@@ -51,7 +51,7 @@ skinparam sequence {
 
 skinparam note {
 	FontName $font.sans$
-	FontSize 9 
+	FontSize 8 
 	FontColor $color.note.fg$
     FontStyle italic
 	BackgroundColor $color.note.bg$
@@ -60,3 +60,130 @@ skinparam note {
 }
 
 hide footbox
+
+skinparam component {
+    ArrowColor $color.high$
+    BackgroundColor $color.low$
+    BorderColor $color.high$
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 12
+    StereotypeFontColor $color.bg$
+    StereotypeFontSize 10
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam interface {
+    BackgroundColor $color.low$
+    BorderColor $color.high$
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 12
+    StereotypeFontColor $color.low$
+    StereotypeFontSize 10
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam genericArrow {
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 10
+}
+
+skinparam cloud {
+    BackgroundColor $color.bg$
+    BorderColor $color.low$
+    FontColor $color.low$
+    FontName $font.sans$
+    FontSize 10
+    FontStyle italic
+    StereotypeFontColor $color.low$
+    StereotypeFontSize 8
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam node {
+    BackgroundColor $color.bg$
+    BorderColor $color.low$
+    FontColor $color.low$
+    FontName $font.sans$
+    FontSize 10
+    FontStyle italic
+    StereotypeFontColor $color.low$
+    StereotypeFontSize 8
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam package {
+    BackgroundColor $color.bg$
+    BorderColor $color.low$
+    FontColor $color.low$
+    FontName $font.sans$
+    FontSize 10
+    FontStyle italic
+    StereotypeFontColor $color.low$
+    StereotypeFontSize 8
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam folder {
+    BackgroundColor $color.bg$
+    BorderColor $color.low$
+    FontColor $color.low$
+    FontName $font.sans$
+    FontSize 10
+    FontStyle italic
+    StereotypeFontColor $color.low$
+    StereotypeFontSize 8
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam frame {
+    BackgroundColor $color.bg$
+    BorderColor $color.low$
+    FontColor $color.low$
+    FontName $font.sans$
+    FontSize 10
+    FontStyle italic
+    StereotypeFontColor $color.low$
+    StereotypeFontSize 8
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam database {
+    BackgroundColor $color.low$
+    BorderColor $color.high$
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 12
+    FontStyle normal
+    StereotypeFontColor $color.bg$
+    StereotypeFontSize 10 
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+
+
+skinparam state {
+    ArrowColor $color.high$
+    AttributeFontColor $color.high$
+    AttributeFontName $font.sans$
+    AttributeFontSize 10
+    AttributeFontStyle italic
+    BackgroundColor $color.low$
+    BorderColor $color.high$
+    EndColor $color.emph$
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 12
+    FontStyle normal
+    StartColor $color.emph$
+}
