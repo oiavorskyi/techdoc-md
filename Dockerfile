@@ -5,6 +5,8 @@ MAINTAINER Oleg Iavorskyi <oleg.iavorskyi@gmail.com>
 ENV LANG C.UTF-8
 ENV LC_CTYPE C.UTF-8
 
+ENV IMAGE_VERSION 2.0
+
 # Installing all "heavy" dependencies in one RUN so Docker cache the
 # intermediate container
 RUN apt-get update -y \
