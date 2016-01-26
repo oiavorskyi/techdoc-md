@@ -35,6 +35,7 @@ skinparam sequence {
     BoxFontName $font.sans$
     BoxFontSize 10
     BoxFontStyle italic
+
     GroupBorderColor $color.high$
     GroupBackgroundColor $color.bg$
     GroupFontColor $color.high$
@@ -43,10 +44,25 @@ skinparam sequence {
     GroupHeaderFontColor $color.high$
     GroupHeaderFontSize 10
     GroupHeaderFontName $font.sans$
+
     StereotypeFontColor $color.bg$
     StereotypeFontSize 10
     StereotypeFontName $font.sans$
     StereotypeFontStyle italic
+
+    DelayFontColor $color.high$
+    DelayFontName $font.sans$
+    DelayFontSize 10
+    DelayFontStyle italic
+
+    ReferenceBorderColor $color.high$
+    ReferenceBackgroundColor $color.bg$
+    ReferenceFontColor $color.high$
+    ReferenceFontSize 10
+    ReferenceFontName $font.sans$
+    ReferenceHeaderFontColor $color.high$
+    ReferenceHeaderFontSize 10
+    ReferenceHeaderFontName $font.sans$
 }
 
 skinparam note {
