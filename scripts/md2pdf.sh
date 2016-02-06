@@ -46,16 +46,23 @@ replacement_params=$(generate_replacement <(echo "$params"))
 eval "find /workspace -type f -name *.skin -exec sed -i $replacement_params {} \;"
 
 java -jar plantuml.jar \
-    -Sdpi=200 \
+    -tsvg \
     -config "/workspace/templates/plantuml.skin" \
     -o /workspace/temp \
     "/workspace/uml/*.uml"
 
-find /workspace/temp -type f -name '*.png' \
-    -exec convert -units PixelsPerInch -density 200 \
-    {} {} \;
+# Pandoc doesn't support SVG => convert to PDF
+find /workspace/temp -type f -name '*.svg' \
+    -exec sh -c 'name=$(echo "$1" | sed 's/\.svg$/.pdf/') \
+                 && echo "Converting $1 -> $name" \
+                 && rsvg-convert -f pdf -o "$name" "$1"' \
+           _  {} \;
 
-cp -rv /workspace/temp/*.png /workspace/media/
+# Copy if available
+find /workspace/temp/ -name \*.png \
+    -exec cp -v {} /workspace/media/ \;
+find /workspace/temp/ -name \*.pdf \
+    -exec cp -v {} /workspace/media/ \;
 
 # Pre-processing all *.md files
 find /workspace -type f -name '*.md' -exec gpp -U '<#' '>' '\B' '|' '>' '<' '>' '#' '' '{}' -o '{}'.mdp \;
@@ -66,7 +73,7 @@ exec pandoc -f $OPTS \
         --standalone \
         --listings \
         --latex-engine=xelatex \
-        --default-image-extension=png \
+        --default-image-extension=pdf \
         --chapters \
         --template=templates/default.latex \
         -o /output/output.pdf \

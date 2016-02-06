@@ -49,7 +49,8 @@ RUN mkdir -p /workspace \
 
 RUN apt-get update -y \
    && apt-get install -y --no-install-recommends \
-   imagemagick
+   imagemagick \
+   librsvg2-bin
 #   xzdec \
 #   && tlmgr init-usertree \
 #   && tlmgr update --self --all --reinstall-forcibly-removed
