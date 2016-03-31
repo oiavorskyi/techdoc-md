@@ -186,7 +186,18 @@ skinparam database {
     StereotypeFontStyle italic
 }
 
-
+skinparam artifact {
+    BackgroundColor $color.low$
+    BorderColor $color.emph$
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 10
+    FontStyle normal
+    StereotypeFontColor $color.high$
+    StereotypeFontSize 8
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
 
 skinparam state {
     ArrowColor $color.high$
@@ -196,10 +207,70 @@ skinparam state {
     AttributeFontStyle italic
     BackgroundColor $color.low$
     BorderColor $color.high$
-    EndColor $color.emph$
+    EndColor $color.high$
     FontColor $color.high$
     FontName $font.sans$
     FontSize 12
     FontStyle normal
-    StartColor $color.emph$
+    StartColor $color.high$
 }
+
+skinparam activity {
+    ArrowColor $color.high$
+    ArrowFontColor $color.high$
+    ArrowFontName $font.sans$
+    ArrowFontSize 12
+    ArrowFontStyle normal
+
+    BackgroundColor $color.bg$
+    BarColor $color.high$
+    BorderColor $color.high$
+
+    DiamondFontColor $color.high$
+    DiamondFontName $font.sans$
+    DiamondFontSize 12
+    DiamondfontStyle normal
+
+    EndColor $color.high$
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 12
+    FontStyle normal
+    StartColor $color.high$
+}
+
+skinparam class {
+    ArrowColor $color.high$
+    AttributeFontColor $color.high$
+    AttributeFontName $font.sans$
+    AttributeFontSize 10
+    AttributeFontStyle italic
+    AttributeIconSize 10
+
+    BackgroundColor $color.bg$
+    BorderColor $color.high$
+
+    FontColor $color.high$
+    FontName $font.sans$
+    FontSize 12
+    FontStyle normal
+
+    HeaderBackgroundColor $color.low$
+
+    StereotypeFontColor $color.bg$
+    StereotypeFontSize 10 
+    StereotypeFontName $font.sans$
+    StereotypeFontStyle italic
+}
+
+skinparam stereotype {
+    ABackgroundColor $color.low$
+    CBackgroundColor $color.low$
+    EBackgroundColor $color.low$
+    IBackgroundColor $color.low$
+}
+
+skinparam CircledCharacterFontColor $color.high$
+skinparam CircledCharacterFontName $font.sans$
+skinparam CircledCharacterFontSize 12
+skinparam CircledCharacterFontStyle normal
